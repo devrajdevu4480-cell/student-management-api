@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management Portal</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AI Powered</p>
+          <h1>Student Management Portal</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="search-box">
+            <span>🔎</span>
+            <input id="searchInput" type="text" placeholder="Search student..." />
+          </div>
+          <button id="loadInsightsBtn" class="secondary-btn">View Class Insights</button>
+        </div>
+      </header>
+
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="panel-tag">Student Dashboard</p>
+          <h2>Track performance. Manage records. Grow outcomes.</h2>
+          <p>Manage students, monitor academic performance, and generate AI insights.</p>
+        </div>
+        <div class="stats" id="summaryStats">
+          <div class="stat-box">
+            <span class="label">Total Students</span>
+            <strong id="totalStudents">0</strong>
+          </div>
+          <div class="stat-box">
+            <span class="label">Top Performer</span>
+            <strong id="topPerformer">-</strong>
+          </div>
+          <div class="stat-box">
+            <span class="label">Class Avg</span>
+            <strong id="classAverage">0%</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="card form-card">
+          <h3 id="formTitle">Add Student</h3>
+          <form id="studentForm">
+            <input type="hidden" id="studentId" />
+
+            <div class="input-grid">
+              <label>
+                Full Name
+                <input type="text" id="name" placeholder="Enter name" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" id="email" placeholder="student@email.com" required />
+              </label>
+
+              <label>
+                Age
+                <input type="number" id="age" min="1" max="100" required />
+              </label>
+
+              <label>
+                Course
+                <select id="course" required>
+                  <option value="">Select course</option>
+                  <option>BSc Computer Science</option>
+                  <option>BCA</option>
+                  <option>BTech</option>
+                  <option>MCA</option>
+                  <option>Business Administration</option>
+                  <option>Diploma in IT</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="marks-section">
+              <h4>Marks</h4>
+              <div class="marks-grid">
+                <label>JavaScript <input type="number" id="javascript" min="0" max="100" required /></label>
+                <label>Python <input type="number" id="python" min="0" max="100" required /></label>
+                <label>Java <input type="number" id="java" min="0" max="100" required /></label>
+                <label>DSA <input type="number" id="DSA" min="0" max="100" required /></label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save Student</button>
+              <button type="button" id="resetBtn" class="ghost-btn">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card insights-card">
+          <h3>AI Academic Insights</h3>
+          <div id="insightsBox" class="insights-box">
+            Click “View Class Insights” to see AI performance summaries.
+          </div>
+        </div>
+      </section>
+
+      <section class="card table-card">
+        <div class="table-header">
+          <h3>Student Records</h3>
+          <span id="recordCount" class="record-count">0 records</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Age</th>
+                <th>Average</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
